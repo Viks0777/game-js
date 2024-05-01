@@ -159,18 +159,20 @@ class Box {
       const newGrid = document.createElement("div");
       newGrid.className = "grid";
       for (let i = 0; i < 4; i++) {
-        for (let j = 0; j < 4; j++) {
-          const button = document.createElement("button");
-  
-          if (status === "playing") {
-            button.addEventListener("click", this.handleClickBox(new Box(j, i)));
+          for (let j = 0; j < 4; j++) {
+              const button = document.createElement("button");
+              
+              if (status === "playing") {
+                  button.addEventListener("click", this.handleClickBox(new Box(j, i)));
+              }
+              
+              button.textContent = grid[i][j] === 0 ? "" : grid[i][j].toString();
+              button.style.margin = "2px"; // Добавлен небольшой отступ между кнопками
+              newGrid.appendChild(button);
           }
-  
-          button.textContent = grid[i][j] === 0 ? "" : grid[i][j].toString();
-          newGrid.appendChild(button);
-        }
       }
       document.querySelector(".grid").replaceWith(newGrid);
+      
   
       // button
       const newButton = document.createElement("button");
