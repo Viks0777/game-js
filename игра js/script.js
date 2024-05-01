@@ -176,12 +176,13 @@ class Box {
       const newButton = document.createElement("button");
       if (status === "ready") newButton.textContent = "Play";
       if (status === "playing") newButton.textContent = "Reset";
-      if (status === "won") newButton.textContent = "Play";
+      if (status === "won") newButton.textContent = "Play Again"; // Изменено сообщение кнопки после выигрыша
       newButton.addEventListener("click", () => {
-        clearInterval(this.tickId);
-        this.tickId = setInterval(this.tick, 1000);
-        this.setState(State.start());
+          clearInterval(this.tickId);
+          this.tickId = setInterval(this.tick, 1000);
+          this.setState(State.start());
       });
+      
       document.querySelector(".footer button").replaceWith(newButton);
   
       document.getElementById("move").textContent = `Move: ${move}`;
