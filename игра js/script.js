@@ -68,18 +68,19 @@ class Box {
   
   const getRandomGrid = () => {
     let grid = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]];
-  
+
     // Shuffle
     let blankBox = new Box(3, 3);
-    for (let i = 0; i < 1000; i++) {
-      const randomNextdoorBox = blankBox.getRandomNextdoorBox();
-      swapBoxes(grid, blankBox, randomNextdoorBox);
-      blankBox = randomNextdoorBox;
+    for (let i = 0; i < 500; i++) { // Уменьшено количество перемешиваний с 1000 до 500
+        const randomNextdoorBox = blankBox.getRandomNextdoorBox();
+        swapBoxes(grid, blankBox, randomNextdoorBox);
+        blankBox = randomNextdoorBox;
     }
-  
+
     if (isSolved(grid)) return getRandomGrid();
     return grid;
-  };
+};
+
   
   class State {
     constructor(grid, move, time, status) {
